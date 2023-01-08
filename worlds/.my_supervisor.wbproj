@@ -1,0 +1,23 @@
+Webots Project File version R2023a
+perspectives: 000000ff00000000fd000000020000000100000396000003cefc0200000001fb0000001400540065007800740045006400690074006f00720100000016000003ce0000008700ffffff000000030000078000000099fc0100000001fb0000001a0043006f006e0073006f006c00650041006c006c0041006c006c0100000000000007800000000000000000000003e8000003ce00000001000000020000000100000008fc00000000
+simulationViewPerspectives: 000000ff00000001000000020000016c000002b80100000002010000000100
+sceneTreePerspectives: 000000ff00000001000000030000001e000002b6000000fa0100000002010000000200
+maximizedDockId: -1
+centralWidgetVisible: 1
+projectionMode: PERSPECTIVE
+renderingMode: PLAIN
+orthographicViewHeight: 16.1013
+textFiles: 0 "controllers/nao_by_ai/nao_by_ai.py"
+globalOptionalRendering: CameraFrustums
+renderingDevicePerspectives: NAO(1):CameraBottom;1;1;0;0
+renderingDevicePerspectives: NAO(1):CameraTop;1;1;0;0
+renderingDevicePerspectives: NAO(2):CameraBottom;1;1;0;0
+renderingDevicePerspectives: NAO(2):CameraTop;1;1;0;0
+renderingDevicePerspectives: NAO:CameraBottom;1;0.983333;0.0159925;0.0077958
+renderingDevicePerspectives: NAO:CameraTop;1;0.98125;0.0148143;0.189959
+renderingDevicePerspectives: e-puck(1):camera;1;1;0;0
+renderingDevicePerspectives: e-puck:camera;1;1;0;0
+renderingDevicePerspectives: robot(1):camera;1;1;0;0
+renderingDevicePerspectives: robot(1):e-puck:camera;1;1;0;0
+renderingDevicePerspectives: robot:CAM;1;1;0;0
+renderingDevicePerspectives: robot:camera;1;1;0;0

@@ -1,0 +1,189 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/sphero/bb8/protos/BB-8.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/softbank/nao/protos/Nao.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/humans/pedestrian/protos/Pedestrian.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/WoodenBox.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.7956985934742723 0.48275807026612594 0.3657982967920857 4.403635414634321
+  position -3.516852593473804 0.5277320869247373 -4.547232801989779
+  follow "rectangle arena"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0.188966 0 0.123339
+  rotation 1 0 0 -1.5707996938995747
+  floorSize 10 10
+}
+Robot {
+  translation 0 0.67 0
+  children [
+    Camera {
+    }
+    E-puck {
+    }
+  ]
+  name "robot(1)"
+}
+Transform {
+  translation 1.29 0 -3.61
+  children [
+    Solid {
+      translation 0 1.57 -6.24705e-06
+      rotation 1 0 0 -1.5708003061004252
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Cylinder {
+            height 3.1
+            radius 0.11
+          }
+        }
+      ]
+      name "poste"
+      boundingObject Cylinder {
+        height 3.1
+        radius 0.11
+      }
+      physics Physics {
+        mass 2
+      }
+      locked TRUE
+    }
+    Solid {
+      translation 0 0.23 2.34563e-07
+      rotation 1 0 0 -1.5707953071795862
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.5
+          }
+        }
+      ]
+      name "base"
+      boundingObject Cylinder {
+        height 0.1
+        radius 0.5
+      }
+      physics Physics {
+        mass 5
+      }
+      locked TRUE
+    }
+  ]
+}
+E-puck {
+  translation 0 0.338831 -1.20173
+  rotation -1 0 0 1.3089953071795861
+  controller "epuck_go_forward"
+}
+WoodenBox {
+  translation 0 0.59 0.49
+  mass 2
+}
+WoodenBox {
+  translation 2.18 0.59 -0.37
+  name "wooden box(1)"
+  mass 2
+}
+WoodenBox {
+  translation 2.95 0.59 -1.73
+  name "wooden box(2)"
+  mass 2
+}
+Robot {
+  translation 0 0.96 0
+  children [
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      endPoint Solid {
+        children [
+          HingeJoint {
+            endPoint Solid {
+              children [
+                Camera {
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+    Camera {
+      name "CAM"
+    }
+  ]
+  controller "<none>"
+  controllerArgs [
+    "wb_camera_enable"
+  ]
+  supervisor TRUE
+}
+DEF BB-8 BB-8 {
+  translation 0.00013095474057906505 -0.040975809395443014 1.8544713380093076
+  rotation -0.907279407026152 0.28834181592323965 0.3061095796873445 1.73368459419624
+  controller "sumo_supervisor"
+}
+Solid {
+  children [
+    Pedestrian {
+      translation 0 1.53 1.27
+    }
+  ]
+  physics Physics {
+  }
+}
+Robot {
+  name "supervisor"
+  controller ""
+  supervisor TRUE
+}
+DEF BALL Solid {
+  translation 1.7418236620900007 0.1998489796937274 1.8873746215279685
+  rotation -0.36201175376949435 0.7583959747851028 -0.5420175601975353 -1.8710081880137999
+  children [
+    Shape {
+      appearance DEF SPHERE_COLOR PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry DEF SPHERE_GEOMETRY Sphere {
+        radius 0.2
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE SPHERE_GEOMETRY
+  physics Physics {
+    density -1
+    mass 0.1
+  }
+}
+Nao {
+  translation -2.002708574526623 0.33232506542679424 0.9312893796532576
+  rotation -0.6015132101407612 0.5638542360040532 0.5659065811301736 2.0556899516349554
+  controller "nao_by_ai"
+  supervisor TRUE
+  cameraFocus Focus {
+  }
+}
+Pedestrian {
+  translation -2.79224 1.54 3.7
+  rotation -0.9351134888498739 0.25056313098704747 0.2505611309860019 1.63784
+}
