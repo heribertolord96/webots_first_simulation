@@ -13,13 +13,16 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.481898433513706 0.27761258886950657 0.8310867284936072 4.610793108785068
-  position -1.6874828053679638 10.011312717118521 -10.931135280125584
+  orientation 0.12579708905807363 0.7024560986467269 0.7005216069890601 3.7213315510712217
+  position 11.88314835870727 6.2910212358673485 -10.251464283252023
   follow "rectangle arena"
 }
 TexturedBackground {
+  luminosity 0
 }
 TexturedBackgroundLight {
+  texture "music_hall"
+  luminosity 0
 }
 Solid {
   translation 0.173504 0 0.307859
@@ -470,6 +473,15 @@ Transform {
       translation 0 1.57 -6.24705e-06
       rotation 1 0 0 -1.5708003061004252
       children [
+        SpotLight {
+          attenuation 0 0 1
+          beamWidth 0.7
+          color 0.666667 0 0
+          cutOffAngle 0.78538
+          direction 44 -77 -9
+          intensity 5
+          location 0 3.1 2
+        }
         Shape {
           appearance PBRAppearance {
           }
@@ -607,4 +619,20 @@ Nao {
 Pedestrian {
   translation -2.79224 1.54 3.7
   rotation -0.9351134888498739 0.25056313098704747 0.2505611309860019 1.63784
+}
+Solid {
+  translation 7.83 8.87 9.26
+  children [
+    PointLight {
+      attenuation 0 0 1
+      intensity 50
+      location 0 0.3 0
+      castShadows TRUE
+    }
+    Shape {
+      geometry Sphere {
+      }
+    }
+  ]
+  name "sun"
 }
