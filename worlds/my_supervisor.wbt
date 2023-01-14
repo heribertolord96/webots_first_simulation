@@ -12,10 +12,17 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
   basicTimeStep 16
   coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      coulombFriction [
+        0
+      ]
+    }
+  ]
 }
 Viewpoint {
-  orientation 4.329637285359677e-17 0.7071067811865475 0.7071067811865476 3.141592653589793
-  position 3.0546897197208933 0.6709097322135636 -1.4496018352983124
+  orientation -0.06419889632428742 0.6543505097125479 0.7534612877578197 3.866161110248018
+  position 0.8572909907700326 1.7720813717997244 -0.3891009562394378
   follow "rectangle arena"
 }
 TexturedBackground {
@@ -617,20 +624,6 @@ DEF BALL Solid {
   }
 }
 Nao {
-  hidden rotation_22 0 0.9999999999999999 0 0.9600000002436977
-  hidden rotation_23 0 1 0 0.9599999995505406
-  hidden rotation_24 0 0.9999999999999999 0 0.9599999996014404
-  hidden rotation_25 0 1 0 0.960000000243662
-  hidden rotation_26 0 0.9999999999999999 0 0.9599999995505627
-  hidden rotation_27 0 1 0 0.9599999996107949
-  hidden rotation_29 0 -1 0 0.9599999996635437
-  hidden rotation_34 0 0.9999999999999999 0 0.9600000002436712
-  hidden rotation_35 0 1 0 0.9599999995505617
-  hidden rotation_36 0 1 0 0.9599999997003067
-  hidden rotation_37 0 1 0 0.9600000002436934
-  hidden rotation_38 0 1 0 0.9599999995505766
-  hidden rotation_39 0 1 0 0.9599999994756008
-  hidden rotation_41 0 -1 0 0.9599999996725961
   translation -2.002635820010987 0.33327304893911563 0.9301091625589591
   rotation -0.6021538009701056 0.5645782400010415 0.5645017368392952 2.05769496627077
   controller "nao_by_ai"
@@ -657,4 +650,58 @@ Solid {
     }
   ]
   name "sun"
+}
+Solid {
+  translation 0 1.1 0
+  rotation 0 1 0 1.5708
+  children [
+    Group {
+      children [
+        Transform {
+          translation 0 0 0.05
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0 -0.04
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+  name "pesas"
+  contactMaterial "dumbbell"
+  boundingObject USE SPHERE_GEOMETRY
+  physics Physics {
+    density -1
+    mass 2
+    centerOfMass [
+      0 0 0.01
+    ]
+  }
 }
