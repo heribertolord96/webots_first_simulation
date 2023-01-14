@@ -1,0 +1,181 @@
+#VRML_SIM R2023a utf8
+PROTO FourWheelsRobot [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 0 1 0
+  field SFFloat    bodyMass     1
+]
+{
+    Robot {
+     translation IS translation
+    rotation IS rotation
+    children [
+        DistanceSensor {
+        translation 0.1 -0.04 0
+        rotation 0 1 0 0.03
+        children [
+            Shape {
+            appearance Appearance {
+                material Material {
+                emissiveColor 0 0 1
+                }
+            }
+            geometry Box {
+                size 0.01 0.01 0.01
+            }
+            }
+        ]
+        name "ds_right"
+        }
+        DistanceSensor {
+        translation 0.1 0.04 0
+        rotation 0 1 0 0.03
+        children [
+            Shape {
+            appearance Appearance {
+                material Material {
+                emissiveColor 0 0 1
+                }
+            }
+            geometry Box {
+                size 0.01 0.01 0.01
+            }
+            }
+        ]
+        name "ds_left"
+        }
+        Shape {
+        appearance Appearance {
+            material Material {
+            diffuseColor 0.666667 0 0
+            }
+        }
+        geometry Box {
+            size 0.2 0.1 0.05
+        }
+        }
+        HingeJoint {
+        jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0.05 0.06 0
+        }
+        device [
+            RotationalMotor {
+            }
+        ]
+        endPoint DEF WELL1 Solid {
+            translation 0.06 0.06 -0.01
+            rotation 1 0 0 1.5708
+            children [
+            Shape {
+                geometry Cylinder {
+                height 0.02
+                radius 0.04
+                }
+            }
+            ]
+            boundingObject Cylinder {
+            height 0.02
+            radius 0.04
+            subdivision 32
+            }
+            physics Physics {
+            }
+        }
+        }
+        HingeJoint {
+        jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0.05 0.06 0
+        }
+        device [
+            RotationalMotor {
+            }
+        ]
+        endPoint DEF WELL2 Solid {
+            translation 0.06 -0.06 -0.01
+            rotation 1 0 0 1.5708
+            children [
+            Shape {
+                geometry Cylinder {
+                height 0.02
+                radius 0.04
+                }
+            }
+            ]
+            name "solid(1)"
+            boundingObject Cylinder {
+            height 0.02
+            radius 0.04
+            }
+            physics Physics {
+            }
+        }
+        }
+        HingeJoint {
+        jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0.05 0.06 0
+        }
+        device [
+            RotationalMotor {
+            }
+        ]
+        endPoint DEF WELL3 Solid {
+            translation -0.06 0.06 -0.01
+            rotation 1 0 0 1.5708
+            children [
+            Shape {
+                geometry Cylinder {
+                height 0.02
+                radius 0.04
+                }
+            }
+            ]
+            name "solid(2)"
+            boundingObject Cylinder {
+            height 0.02
+            radius 0.04
+            }
+            physics Physics {
+            }
+        }
+        }
+        HingeJoint {
+        jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0.05 0.06 0
+        }
+        device [
+            RotationalMotor {
+            }
+        ]
+        endPoint DEF WELL4 Solid {
+            translation -0.06002751585125744 -0.0600313072141625 -0.010004425623761587
+            rotation 0.9999999999999816 -8.693249095345526e-08 1.7094907709157773e-07 1.5707996151077508
+            children [
+            Shape {
+                geometry Cylinder {
+                height 0.02
+                radius 0.04
+                }
+            }
+            ]
+            name "solid(3)"
+            boundingObject Cylinder {
+            height 0.02
+            radius 0.04
+            }
+            physics Physics {
+            }
+        }
+        }
+    ]
+    name "robot(2)"
+    boundingObject Box {
+        size 0.2 0.1 0.05
+    }
+    physics Physics {
+    }
+    controller "four_wheeled_collision_avoidance"
+    }
+}
